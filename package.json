@@ -1,0 +1,29 @@
+{
+  "name": "@whi/promise-timeout",
+  "version": "0.1.0",
+  "description": "A micro-package for scheduling a timeout rejection on a Promise",
+  "main": "src/index.js",
+  "files": [
+    "README.md",
+    "src/index.js",
+    "src/errors.js"
+  ],
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthew Brisebois <matthew@webheroes.ca>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mjbrisebois/js-promise-timeout/"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@whi/stdlog": "^0.3.4",
+    "chai": "^4.3.4",
+    "mocha": "^9.0.0",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2"
+  }
+}
