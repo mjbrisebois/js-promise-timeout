@@ -1,7 +1,5 @@
 
 class TimeoutError extends Error {
-    [Symbol.toStringTag]		= "TimeoutError";
-
     constructor( timeout, context = "settle promise" ) {
 	super(`Failed to ${context} within ${timeout/1000} second(s)`);
 
@@ -24,6 +22,9 @@ class TimeoutError extends Error {
 	};
     }
 }
+Object.defineProperty( TimeoutError.prototype, Symbol.toStringTag, {
+    "value": "TimeoutError",
+});
 
 
 module.exports = {

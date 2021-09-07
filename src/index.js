@@ -2,12 +2,15 @@
 const { TimeoutError }			= require('./errors.js');
 
 
-class PromiseTimeout extends Promise {
+class PromiseTimeout { // extends Promise
 
     constructor ( executor, timeout = 1000, error_context = undefined ) {
-	super( ( resolve, reject ) => {
+	// Create the Timeout Error now to preserve the original stack trace
+	const to_err			= new TimeoutError( timeout, error_context );
+
+	return new Promise( ( resolve, reject ) => {
 	    const toid			= setTimeout( () => {
-		reject(new TimeoutError( timeout, error_context ));
+		reject( to_err );
 	    }, timeout );
 
 	    executor(
