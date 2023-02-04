@@ -54,6 +54,13 @@ function basic_tests () {
 	);
     });
 
+    it("should resolve with async executor", async () => {
+	await new PromiseTimeout( async () => {
+	    await new Promise(f => setTimeout(f, 100));
+	    return true;
+	});
+    });
+
     it("should customize timeout error message", async () => {
 	let failed			= false;
 	try {

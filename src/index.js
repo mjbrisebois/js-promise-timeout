@@ -8,21 +8,37 @@ class PromiseTimeout { // extends Promise
 	// Create the Timeout Error now to preserve the original stack trace
 	const to_err			= new TimeoutError( timeout, error_context );
 
-	return new Promise( ( resolve, reject ) => {
+	return new Promise( async ( resolve, reject ) => {
 	    const toid			= setTimeout( () => {
 		reject( to_err );
 	    }, timeout );
 
-	    executor(
-		value => {
-		    clearTimeout( toid );
-		    resolve( value );
-		},
-		error => {
-		    clearTimeout( toid );
-		    reject( error );
-		},
-	    );
+	    let complete		= false;
+
+	    function success ( value ) {
+		if ( complete )
+		    return;
+		clearTimeout( toid );
+		resolve( value );
+		complete		= true;
+	    }
+	    function failure ( error ) {
+		if ( complete )
+		    return;
+		clearTimeout( toid );
+		reject( error );
+		complete		= true;
+	    }
+
+	    try {
+		const value		= await executor( success, failure );
+
+		if ( executor.constructor.name === "AsyncFunction"
+		     && executor.toString().match(/\((.*?)\)/)[1].split(",").map(s => s.trim()).length )
+		    success( value );
+	    } catch (err) {
+		failure( err );
+	    }
 	});
     }
 }
