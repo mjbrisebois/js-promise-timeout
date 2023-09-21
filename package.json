@@ -2,6 +2,7 @@
   "name": "@whi/promise-timeout",
   "version": "0.1.1",
   "description": "A micro-package for scheduling a timeout rejection on a Promise",
+  "type": "module",
   "main": "src/index.js",
   "files": [
     "README.md",
@@ -18,9 +19,8 @@
     "type": "git",
     "url": "https://github.com/mjbrisebois/js-promise-timeout/"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@whi/stdlog": "^0.3.4",
+    "@whi/weblogger": "^0.1.6",
     "chai": "^4.3.4",
     "mocha": "^9.0.0",
     "webpack": "^5.45.1",

@@ -16,17 +16,17 @@ build:			node_modules
 test:			build test-setup
 	npx mocha --recursive ./tests
 test-debug:		build test-setup
-	LOG_LEVEL=silly npx mocha --recursive ./tests
+	LOG_LEVEL=trace npx mocha --recursive ./tests
 
 test-unit:		build test-setup
 	npx mocha ./tests/unit
 test-unit-debug:	build test-setup
-	LOG_LEVEL=silly npx mocha ./tests/unit
+	LOG_LEVEL=trace npx mocha ./tests/unit
 
 test-integration:	build test-setup
 	npx mocha ./tests/integration
 test-integration-debug:	build test-setup
-	LOG_LEVEL=silly npx mocha ./tests/integration
+	LOG_LEVEL=trace npx mocha ./tests/integration
 test-setup:
 
 
