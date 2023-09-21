@@ -4,7 +4,7 @@ import TerserPlugin		from 'terser-webpack-plugin';
 
 
 const MODE			= process.env.MODE || "development";
-const FILENAME			= process.env.FILENAME || "holochain-admin-client";
+const FILENAME			= process.env.FILENAME || "promise-timeout.bundled";
 const FILEEXT			= MODE === "production" ? "min.js" : "js";
 
 
