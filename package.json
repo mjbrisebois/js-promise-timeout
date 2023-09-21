@@ -1,6 +1,6 @@
 {
   "name": "@whi/promise-timeout",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A micro-package for scheduling a timeout rejection on a Promise",
   "type": "module",
   "main": "src/index.js",
